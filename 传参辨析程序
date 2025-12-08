@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+void f1(int x)          { x = 999; }        // 第1种：普通整数
+void f2(int *p)         { *p = 999; }       // 第2种：指针（地址）
+void f3(int arr[])      { arr[0] = 999; }   // 第3种：数组（偷偷变成指针）
+void f4(int *arr)       { arr[0] = 999; }   // 第4种：明确写成指针
+
+int main()
+{
+    int a = 10;                    // 普通变量
+    int arr[5] = {1,2,3,4,5};      // 数组
+    
+    f1(a);              // 第1次调用
+    printf("a = %d\n", a);
+    
+    f2(&a);             // 第2次调用
+    printf("a = %d\n", a);
+    
+    f3(arr);            // 第3次调用
+    printf("arr[0] = %d\n", arr[0]);
+    
+    f4(arr);            // 第4次调用
+    printf("arr[0] = %d\n", arr[0]);
+
+    return 0;
+}
